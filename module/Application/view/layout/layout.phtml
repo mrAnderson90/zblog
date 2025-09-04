@@ -1,0 +1,60 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('ZF2 ' . $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false); ?>
+
+    <?= $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge') ?>
+
+    <!-- Styles -->
+    <?= $this->headLink([
+            'rel' => 'shortcut icon',
+            'type' => 'image/vnd.microsoft.icon',
+            'href' => $this->basePath() . '/img/favicon.ico'
+        ])
+        ->prependStylesheet($this->basePath('css/style.css'))
+        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+
+    <!-- Scripts -->
+    <?= $this->inlineScript()
+        ->prependFile($this->basePath('js/bootstrap.min.js')) // jQuery не нужен в BS5
+    ?>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="<?= $this->url('home') ?>">
+                <img src="<?= $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework" height="28" />
+                &nbsp;<?= $this->translate('Skeleton Application') ?>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<?= $this->url('home') ?>">
+                            <?= $this->translate('Home') ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5 pt-4">
+        <?= $this->content ?>
+        <hr>
+        <footer class="py-2">
+            <p class="text-muted mb-0">&copy; 2005 - <?= date('Y') ?> by Zend Technologies Ltd. <?= $this->translate('All rights reserved.') ?></p>
+        </footer>
+    </main>
+
+    <?= $this->inlineScript() ?>
+</body>
+</html>

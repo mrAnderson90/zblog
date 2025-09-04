@@ -1,0 +1,47 @@
+/* Базовая отступы */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+/* Цвет ZF-зелёный */
+.zf-green {
+  color: #68b604;
+}
+
+/* Кастомная кнопка успеха — переопределение Bootstrap 5 переменных */
+.btn-success {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #57a900;
+  --bs-btn-border-color: #57a900;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #4b9300;
+  --bs-btn-hover-border-color: #448500;
+  --bs-btn-focus-shadow-rgb: 112, 217, 0;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #3d7800;
+  --bs-btn-active-border-color: #366a00;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #57a900;
+  --bs-btn-disabled-border-color: #57a900;
+
+  /* Дополнительно — градиент как в старом стиле */
+  background-image: linear-gradient(to bottom, #70d900, #57a900);
+  background-repeat: repeat-x;
+}
+
+/* Уточнение состояния, если где-то не применилось */
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus {
+  background-color: #57a900;
+  background-image: none;
+  border-color: #448500;
+}
+
+/* Для старого логотипа ZF2 в navbar */
+.navbar-brand.zf2-logo {
+  background: url("../img/zf2-logo.png") no-repeat scroll 0 center transparent;
+  padding-left: 40px;
+  background-size: auto 80%;
+}
