@@ -1,0 +1,13 @@
+/vendor/
+composer.phar
+
+# IDE
+.idea/
+nbproject/
+.project
+.settings/
+.DS_Store
+
+# macOS
+._*
+~lock.*
