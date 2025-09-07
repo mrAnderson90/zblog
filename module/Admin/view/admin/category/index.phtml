@@ -33,9 +33,9 @@
                 <td>{$item->getCategoryName()}</td>
             ";
             $tr .= "<td>
-                        <a href=\"{$this->url('admin/category', array('action' => 'edit', 'id' => $item->getId()))}\">Редактировать</a>&nbsp;&nbsp;
-                        <a href=\"{$this->url('admin/category', array('action' => 'delete', 'id' => $item->getId()))}\" onclick=\"if (confirm(\'Удалить запись?\')) {document.location = this.href;} return false;\">Удалить</a>
-                    </td>";
+                <a href=\"{$this->url('admin/category', ['action' => 'edit', 'id' => $item->getId()])}\">Редактировать</a>&nbsp;&nbsp;
+                <a href=\"{$this->url('admin/category', ['action' => 'delete', 'id' => $item->getId()])}\" onclick=\"if (confirm('Удалить запись?')) { window.location = this.href; } return false;\">Удалить</a>
+            </td>";
             $tr .= "</tr>";
             echo $tr;
         }

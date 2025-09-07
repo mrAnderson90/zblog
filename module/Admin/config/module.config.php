@@ -27,6 +27,7 @@
          'invokables' => array(
              'Admin\Controller\Index' => 'Admin\Controller\IndexController',
              'category' => 'Admin\Controller\CategoryController',
+             'article' => 'Admin\Controller\ArticleController',
          ),
      ),
 
@@ -53,6 +54,16 @@
                             ),
                         ),
                     ),
+                    'article' => array(
+                        'type' => 'segment',
+                        'options' => array(
+                            'route' => 'article/[:action/][:id/]',
+                            'defaults' => array(
+                                'controller' => 'article',
+                                'action' => 'index',
+                            ),
+                        ),
+                    ),
                 ), // << child_routes
              ),
          ),
@@ -61,6 +72,9 @@
      'view_manager' => array(
          'template_path_stack' => array(
              'admin' => __DIR__ . '/../view',
+         ),
+         'template_map' => array(
+             'pagination_control' => __DIR__ . '/../view/layout/pagination_control.phtml',
          ),
      ),
  );
