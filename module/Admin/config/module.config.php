@@ -8,7 +8,7 @@
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
                 'paths' => array(
-                    __DIR__ . '/../src/Admin/Entity',
+                    // __DIR__ . '/../src/Admin/Entity', // Раскомментировать, если появятся сущности
                 ),
             ),
 
@@ -17,7 +17,7 @@
             'orm_default' => array(
                 'drivers' => array(
                     // register `my_annotation_driver` for any entity under namespace `My\Namespace`
-                    'Admin\Entity' => 'admin_entity'
+                    // 'Admin\Entity' => 'admin_entity' // Раскомментировать, если появятся сущности
                 )
             )
         )
