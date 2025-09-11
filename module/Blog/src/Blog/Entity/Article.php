@@ -201,7 +201,7 @@ class Article
     public function getShortArticleForTable()
     {
         $article = strip_tags($this->getShortArticle());
-        $article = mb_substr($article, 0, 20, 'UTF-8') . '...';
+        $article = mb_substr($article, 0, 15, 'UTF-8') . '...';
         return $article;
     }
 }
