@@ -37,7 +37,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               TEST TEST
-                <?php // echo $this->navigation('admin_navigation')->menu()->setUlClass('nav navbar-nav me-auto')->renderSubMenu(); ?>
+                <?php  echo $this->navigation('admin_navigation')->menu()->setUlClass('nav navbar-nav me-auto')->renderSubMenu(); ?>
 <!--                <ul class="navbar-nav me-auto mb-2 mb-md-0">-->
 <!--                    <li class="nav-item">-->
 <!--                        <a class="nav-link active" href="--><?php //= $this->url('home') ?><!--">-->
@@ -50,7 +50,7 @@
     </nav>
 
     <main class="container mt-5 pt-4">
-        <?php // echo '<br><br>' . $this->navigation('admin_navigation')->breadcrumbs(); ?>
+        <?php  echo '<br><br>' . $this->navigation('admin_navigation')->breadcrumbs(); ?>
         <?= $this->content ?>
         <hr>
         <footer class="py-2">
