@@ -1,1 +1,48 @@
-<h1>Index Blog Controller</h1>
+<?php
+
+echo "<div class=\"mb-4\">";
+foreach ($articles as $item) {
+    $category = $item->getCategory();
+    if ($category) {
+        $catName = $category->getCategoryName();
+    } else {
+        $catName = '';
+    }
+
+    if ($item->getIsPublic()) {
+        $isPublic = 'Да';
+    } else {
+        $isPublic = 'Нет';
+    }
+
+    $url = $this->url('blog', array(
+            'action' => 'article',
+            'id' => $item->getId(),
+    ));
+
+    echo    "<article class=\"panel panel-default\">
+                <div class=\"page-header mt-2\">
+                    <h4 class=\"h4 pl-2\">
+                        <a href=\"{$url}\">{$item->getTitle()}</a>
+                    </h4>
+                </div>
+                <div class=\"panel-body ps-2\">
+                    {$item->getShortArticleForBlog()}
+                </div>
+                <div class=\"panel-footer ps-2\">
+                    <div>
+                        Категория: {$item->getCategory()->getCategoryName()}
+                    </div>
+                </div>
+            
+            </article>";
+}
+
+echo "</div>";
+
+echo $this->paginationControl(
+  $articles,
+  'Sliding',
+  'pagination_control',
+  array('route' => 'blog')
+);
