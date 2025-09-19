@@ -217,7 +217,7 @@ class Article
 
     public function getFullArticle()
     {
-      $article = $this->getShortArticle() . $this->getArticle();
+      $article = $this->getShortArticle() . ' ' . $this->getArticle();
 
       return $article;
     }
