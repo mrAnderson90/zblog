@@ -3,6 +3,7 @@
 namespace Blog\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Form\Annotation;
 
 /**
  * Comment
@@ -12,40 +13,63 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Comment
 {
-    /**
+    /** 
      * @var integer
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Annotation\Type("Zend\Form\Element\Hidden")
      */
     private $id;
 
-    /**
+    /** 
      * @var string
      *
      * @ORM\Column(name="user_email", type="string", length=50, nullable=true)
+     * @Annotation\Type("Zend\Form\Element\Email")
+     * @Annotation\Options(("label":"Email"))
+     * @Annotation\Required(("required":"true"))
+     * @Annotation\Attributes(("id":"user_email", "class":"form-control", "required":"required"))
+     * @Annotation\Validator(("name":"EmailAddress"))
+     *
      */
     private $userEmail;
 
-    /**
+    /** 
      * @var string
      *
      * @ORM\Column(name="comment", type="text", length=65535, nullable=true)
+     * @Annotation\Type("Zend\Form\Element\Textarea")
+     * @Annotation\Options(("label":"Коммектарий"))
+     * @Annotation\Required(("required":"true"))
+     * @Annotation\Filter(("name":"StripTags"))
+     * @Annotation\Attributes(("id":"user_comment", "class":"form-control", "required":"required"))
+     * @Annotation\Validator(("name":"StringLength", "option":("min":11, "max":30))
+     * 
      */
     private $comment;
 
-    /**
+    /** 
      * @var \Blog\Entity\Article
      *
      * @ORM\ManyToOne(targetEntity="Blog\Entity\Article")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="article", referencedColumnName="id")
+     * @Annotation\Options(("label":"Статья"))
      * })
      */
     private $article;
-
-
+    
+    
+    /** 
+     * 
+     * @Annotation\Type("Zend\Form\Element\Submit")
+     * @Annotation\Attributes(("value":"Сохранить", "id":"btn_submit", "class":"form-control", "required":"required"))
+     * @Annotation\AllowEmpty(("allowempty":"true"))
+     * 
+     */
+    public $sumbit;
 
     /**
      * Get id

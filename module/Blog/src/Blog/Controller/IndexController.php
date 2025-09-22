@@ -10,6 +10,7 @@ use Zend\Paginator\Paginator;
 
 use DoctrineORMModule\Form\Annotation\AnnotationBuilder;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Blog\Entity\Comment;
 
 
 class IndexController extends BaseController
@@ -31,6 +32,16 @@ class IndexController extends BaseController
 
       return array('articles' => $paginator);
     }
+    
+    protected function getCommentForm(Comment $comment)
+    {
+        $builder = new AnnotationBuilder($this->getEntityManager());
+        $form = $builder->createForm(new Comment());
+        $form->setHydrator(new DoctrineHydrator($this->getEntityManager(), '\Comment'));
+        $form->bind($comment);
+        
+        return $form;
+    }
 
     public function articleAction()
     {
@@ -41,7 +52,10 @@ class IndexController extends BaseController
         if (empty($article)) {
             return $this->notFoundAction();
         }
+        
+        $comment = new Comment();
+        $form = $this->getCommentForm($comment);
 
-        return array('article' => $article);
+        return array('article' => $article, "form" => $form);
     }
 }
