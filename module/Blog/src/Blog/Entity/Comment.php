@@ -28,10 +28,10 @@ class Comment
      *
      * @ORM\Column(name="user_email", type="string", length=50, nullable=true)
      * @Annotation\Type("Zend\Form\Element\Email")
-     * @Annotation\Options(("label":"Email"))
-     * @Annotation\Required(("required":"true"))
-     * @Annotation\Attributes(("id":"user_email", "class":"form-control", "required":"required"))
-     * @Annotation\Validator(("name":"EmailAddress"))
+     * @Annotation\Options({"label":"Email"})
+     * @Annotation\Required({"required":"true"})
+     * @Annotation\Attributes({"id":"user_email", "class":"form-control", "required":"required"})
+     * @Annotation\Validator({"name":"EmailAddress"})
      *
      */
     private $userEmail;
@@ -41,11 +41,11 @@ class Comment
      *
      * @ORM\Column(name="comment", type="text", length=65535, nullable=true)
      * @Annotation\Type("Zend\Form\Element\Textarea")
-     * @Annotation\Options(("label":"Коммектарий"))
-     * @Annotation\Required(("required":"true"))
-     * @Annotation\Filter(("name":"StripTags"))
-     * @Annotation\Attributes(("id":"user_comment", "class":"form-control", "required":"required"))
-     * @Annotation\Validator(("name":"StringLength", "option":("min":11, "max":30))
+     * @Annotation\Options({"label":"Коммектарий"})
+     * @Annotation\Required({"required":true})
+     * @Annotation\Filter({"name":"StripTags"})
+     * @Annotation\Attributes({"id":"user_comment", "class":"form-control", "required":"required"})
+     * @Annotation\Validator({"name":"StringLength", "option":{"min":11, "max":30}})
      * 
      */
     private $comment;
@@ -56,8 +56,8 @@ class Comment
      * @ORM\ManyToOne(targetEntity="Blog\Entity\Article")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="article", referencedColumnName="id")
-     * @Annotation\Options(("label":"Статья"))
      * })
+     * @Annotation\Options({"label":"Статья"})
      */
     private $article;
     
@@ -65,11 +65,11 @@ class Comment
     /** 
      * 
      * @Annotation\Type("Zend\Form\Element\Submit")
-     * @Annotation\Attributes(("value":"Сохранить", "id":"btn_submit", "class":"form-control", "required":"required"))
-     * @Annotation\AllowEmpty(("allowempty":"true"))
+     * @Annotation\Attributes({"value":"Сохранить", "id":"btn_submit", "class":"form-control", "required":"required"})
+     * @Annotation\AllowEmpty({"allowempty":"true"})
      * 
      */
-    public $sumbit;
+    public $submit;
 
     /**
      * Get id

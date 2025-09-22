@@ -9,3 +9,56 @@ echo "<article>
         </div>
     </article>";
 ?>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+            <div class="card-body">
+              <?php
+              $form->setAttribute('action', $this->url('blog', array('action' => 'comment-add')));
+              $form->setAttribute('class', 'needs-validation');
+              $form->prepare();
+    
+              echo $this->form()->openTag($form);
+    
+              echo '<fieldset><legend class="mb-4">Добавить комментарий</legend>';
+              echo '<div id="comment_errors"></div>';
+    
+              // Email
+              $e = $form->get('userEmail');
+              $e->setLabelAttributes(array('class' => 'form-label'));
+              $e->setAttribute('class', 'form-control');
+    
+              echo '<div class="mb-3">';
+              echo $this->formLabel($e);
+              echo $this->formEmail($e);
+              echo '</div>';
+    
+              // Комментарий
+              $e = $form->get('comment');
+              $e->setLabelAttributes(array('class' => 'form-label'));
+              $e->setAttribute('class', 'form-control');
+    
+              echo '<div class="mb-3">';
+              echo $this->formLabel($e);
+              echo $this->formTextarea($e);
+              echo '</div>';
+    
+              // Скрытое поле статьи
+              echo '<input type="hidden" name="article" value="' . $article->getId() . '">';
+    
+              // Кнопка отправки
+              $submit = $form->get('submit');
+              $submit->setAttribute('class', 'btn btn-primary');
+              echo $this->formRow($submit);
+    
+              echo '</fieldset>';
+    
+              echo $this->form()->closeTag();
+              ?>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
