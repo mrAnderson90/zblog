@@ -6,10 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Zend\Form\Annotation;
 
 /**
- * Comment
+ * Comment 
  *
  * @ORM\Table(name="comment", indexes={@ORM\Index(name="article", columns={"article"})})
  * @ORM\Entity
+ * @Annotation\Name("comment")
  */
 class Comment
 {
